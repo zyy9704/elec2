@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itszt.elec8.dao.DatachartDao">
+    <sql id="planSql2">
+        <where>
+            <if test='projId!=null and projId!="" '>
+                and ProjID=#{projId}
+            </if>
+            <if test='belongTo!=null and belongTo!="" '>
+                and BelongTo=#{belongTo}
+            </if>
+        </where>
+    </sql>
+
+    <select id="queryAddData" resultType="com.itszt.elec8.domain.ElecFileupload">
+        select * from elec_fileupload
+        <include refid="planSql2"></include>
+
+    </select>
+
+
+</mapper>

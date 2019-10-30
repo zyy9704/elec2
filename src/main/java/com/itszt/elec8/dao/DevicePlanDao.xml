@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itszt.elec8.dao.DevicePlanDao">
+    <sql id="planSql">
+        <where>
+            <if test='jctId!=null and jctId!="" '>
+                and JctID=#{jctId}
+            </if>
+            <if test='devName!=null and devName!="" '>
+                and DevName like '%${devName}%'
+            </if>
+            <if test='planDatef!=null and planDatef!="" '>
+                and PlanDatef > #{planDatef}
+            </if>
+            <if test='planDatet!=null and planDatet!="" '>
+                and PlanDatet &lt; #{planDatet}
+            </if>
+            <if test='devType!=null and devType!="" '>
+                and DevType=#{devType}
+            </if>
+        </where>
+    </sql>
+
+    <select id="queryCountsByCondition" resultType="long">
+        select count(*) from elec_device_plan
+        <include refid="planSql"></include>
+
+    </select>
+
+    <select id="queryPagePlansByCondition" resultType="com.itszt.elec8.domain.ElecDevicePlan">
+        select * from elec_device_plan
+        <include refid="planSql"></include>
+        limit #{startPos},#{size}
+    </select>
+
+    <select id="queryPlansByCondition" resultType="com.itszt.elec8.domain.ElecDevicePlan">
+        select * from elec_device_plan
+        <include refid="planSql"></include>
+
+    </select>
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0"
+        xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>hehe</short-name>
+    <uri>http://itszt.popedom/jstl/fake</uri>
+
+    <tag>
+        <name>checkPope</name>
+        <tag-class>com.itszt.elec8.utils.CheckPopeTag</tag-class>
+        <body-content>scriptless</body-content>
+        <!-- 用于传递角色和权限的值 -->
+        <attribute>
+            <name>have</name> <!-- 属性名字 -->
+            <type>java.lang.String</type>  <!-- 属性类型 -->
+        </attribute>
+    </tag>
+</taglib>
